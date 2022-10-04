@@ -1,0 +1,6 @@
+select a.n as prime
+from generate_series(2, 100) as a(n)
+where not exists ( 
+  select 1 
+    from generate_series(2, a.n-1) as b(n)
+   where a.n% b.n=0 )
